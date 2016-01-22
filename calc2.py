@@ -60,7 +60,8 @@ class Interpreter(object):
         
         # get a character at the position self.pos and decide 
         # what token to create based on the single character
-        
+        while text[self.pos] == " ":
+            self.pos += 1
         current_char = text[self.pos]
         
         # if the character is a digit then convert it to 
@@ -68,18 +69,21 @@ class Interpreter(object):
         # index to point to the next character after the digit,
         # and return the INTEGER token
         
-        if current_char.isdigit():
-            token = Token(INTEGER, int(current_char))
-            self.pos += 1
-            return token
-        elif current_char == '+':
-            token = Token(PLUS, current_char)
-            self.pos += 1
-            return token
-        elif current_char == '-':
-            token = Token(MINUS, current_char)
-            self.pos += 1
-            return token
+        while current_char != " ":
+            
+            if current_char.isdigit():
+                token = Token(INTEGER, int(current_char))
+                self.pos += 1
+                return token
+            elif current_char == '+':
+                token = Token(PLUS, current_char)
+                self.pos += 1
+                return token
+            elif current_char == '-':
+                token = Token(MINUS, current_char)
+                self.pos += 1
+                return token
+            
        
         
         
