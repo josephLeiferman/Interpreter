@@ -22,7 +22,7 @@ class Token(object):
           Token(PLUS '+')
         '''
         
-        return 'Toke({type}, {value})'.format(
+        return 'Token({type}, {value})'.format(
             type=self.type,
             value=repr(self.value)
         )
