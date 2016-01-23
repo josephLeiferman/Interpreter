@@ -106,14 +106,10 @@ class Interpreter(object):
             left_int += str(self.current_token.value)
             self.eat(INTEGER)
             
-            
-            
-        print(left_int)    
         
         # we expect the current token to be a '+' or a '-' token
         op = self.current_token
         operator_symbol= self.current_token.type
-        
         
         
         if self.current_token.type == PLUS:
@@ -124,14 +120,13 @@ class Interpreter(object):
             
             self.eat(MINUS)
         
-        # we expect the current token to be a single-digit integer
+        # right_int will hold a multi-digit number
         right_int = ""
-        
+        # find the size of right_int
         while self.current_token.type == INTEGER:
             right_int += str(self.current_token.value)            
             self.eat(INTEGER)
             
-        print(right_int)
         # after the above call the self.current_token is set to
         # EOF token
         
@@ -139,6 +134,7 @@ class Interpreter(object):
         # has been succesfully found and the method can just 
         # return the result of adding two integers, thus
         # effectively interpreting client input
+        # determines which operator was used and solves based on that information
         if operator_symbol==PLUS:
             result = int(left_int) + int(right_int)
         if operator_symbol==MINUS:
